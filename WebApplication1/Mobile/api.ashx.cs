@@ -74,6 +74,7 @@ namespace WebApplication1.Mobile
             context.Response.Write("Hello World");
         }
 
+
         public bool IsReusable
         {
             get
@@ -134,6 +135,12 @@ namespace WebApplication1.Mobile
             catch { }
             return nvc;
         }
+
+        //public string Login([FromBody]LoginReq req)
+        //{
+        //    var token = TokenManager.GenerateToken(req.username);
+        //    return token;
+        //}
 
     }
 }
