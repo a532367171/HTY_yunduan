@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Web;
 
 namespace WebApplication1.Mobile
@@ -62,13 +63,19 @@ namespace WebApplication1.Mobile
 
             //【6】获取参数
 
-            //string id6 = HttpContext.Current.Request.QueryString["id"].ToString();
+            //string id6 = HttpContext.Current.Request.QueryString["Token"].ToString();
             //string name = HttpContext.Current.Request.QueryString["name"].ToString();
 
             string url7=null;
             var x = ParseUrl(url, out url7);
 
+            string name ="ABC";
 
+
+            string url8 = Login(name);
+
+
+            var b = TokenManager.ValidateToken(url8);
 
             context.Response.ContentType = "text/plain";
             context.Response.Write("Hello World");
@@ -136,11 +143,11 @@ namespace WebApplication1.Mobile
             return nvc;
         }
 
-        //public string Login([FromBody]LoginReq req)
-        //{
-        //    var token = TokenManager.GenerateToken(req.username);
-        //    return token;
-        //}
+        public string Login(string req)
+        {
+            var token = TokenManager.GenerateToken(req);
+            return token;
+        }
 
     }
 }
